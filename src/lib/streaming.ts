@@ -36,3 +36,12 @@ export const services = [
 
 /** Links by service. Services left out aren't shown. */
 export type StreamingUrls = Partial<Record<(typeof services)[number]['id'], string>>;
+
+/** The artist's own pages. */
+export const artistUrls = {
+	tidal: 'https://tidal.com/artist/pablo-anmuar/36932025',
+	apple: 'https://music.apple.com/us/artist/pablo-anmuar/1667428210',
+	youtube: 'https://www.youtube.com/channel/UChec6FqYBkUM4c1xLnibC-g',
+	soundcloud: 'https://soundcloud.com/pabloanmuar',
+	spotify: 'https://open.spotify.com/artist/4jPN3jx8MwNtQMJ6PD46yJ'
+} satisfies StreamingUrls;

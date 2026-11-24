@@ -1,13 +1,29 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
+	import type { HTMLAnchorAttributes, HTMLButtonAttributes } from 'svelte/elements';
 
-	let { href, children }: { href: string; children: Snippet } = $props();
+	type Props = { children: Snippet } & (
+		| (HTMLAnchorAttributes & { href: string })
+		| (HTMLButtonAttributes & { href?: undefined })
+	);
+
+	// `class` sets the look of the button itself, and replaces the default one
+	let {
+		children,
+		class: className = 'bg-cinnabar px-4 py-2 font-display text-xl text-white uppercase sm:text-2xl',
+		...rest
+	}: Props = $props();
 </script>
 
-<!-- Button-style link with two offset outlines that close in on it when hovered or focused -->
-<a {href} class="offset-link relative isolate inline-block rounded-md bg-cinnabar px-4 py-2 font-display text-xl text-white uppercase sm:text-2xl">
+<!-- A link if it has an href, otherwise a button. Two offset outlines close in on it when hovered or focused -->
+<svelte:element
+	this={rest.href === undefined ? 'button' : 'a'}
+	type={rest.href === undefined ? 'button' : undefined}
+	{...rest}
+	class={['offset-link relative isolate inline-block cursor-pointer rounded-md', className]}
+>
 	{@render children()}
-</a>
+</svelte:element>
 
 <style>
 	.offset-link {

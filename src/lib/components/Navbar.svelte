@@ -10,7 +10,9 @@
 		{ href: '/', label: m.home },
 		{ href: '/portfolio', label: m.portfolio },
 		// The About section of the home page
-		{ href: '/#about', label: m.about }
+		{ href: '/#about', label: m.about },
+		// The footer, scrolled to on the home page
+		{ href: '/#contact', label: m.contact }
 	];
 
 	const isHome = $derived(deLocalizeHref(page.url.pathname) === '/');
@@ -92,7 +94,7 @@
 
 	<!-- Centered on the screen, regardless of what's on either side -->
 	<span
-		class="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-xl whitespace-nowrap lg:text-3xl"
+		class="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-xl whitespace-nowrap xl:text-3xl"
 	>
 		PABLO.ANMUAR
 	</span>
@@ -120,7 +122,7 @@
 		bind:offsetHeight={menuHeight}
 		class={[
 			'absolute inset-x-0 top-full flex max-h-[calc(100svh-3.5rem)] flex-col items-center gap-2 overflow-y-auto px-6 pb-4 text-xl text-ink',
-			'lg:static lg:max-h-none lg:flex-row lg:gap-6 lg:overflow-visible lg:p-0 lg:text-base lg:text-inherit',
+			'lg:static lg:max-h-none lg:flex-row lg:gap-4 xl:gap-6 lg:overflow-visible lg:p-0 lg:text-base lg:text-inherit',
 			// Unrolls from the top. `invisible` keeps the closed menu out of the tab order
 			'max-lg:transition-[clip-path,visibility] max-lg:duration-300 max-lg:ease-out max-lg:motion-reduce:transition-none',
 			menuOpen

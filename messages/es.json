@@ -1,5 +1,6 @@
 {
 	"$schema": "https://inlang.com/schema/inlang-message-format",
+	"close": "Cerrar",
 	"menu": "Menú",
 	"scrolldown": "Ir a la siguiente sección",
 	"home": "Inicio",
@@ -18,6 +19,7 @@
 	"about3": "Siempre he visto la música como un lenguaje que conecta a la gente sin importar de donde sean ni qué idioma hablen.",
 	"about4": "De la misma manera, mi música es el reflejo de esta creencia: Quiero crear música que no necesita de traducciones entre culturas o idiomas. ¿Cómo podemos lograr esto? La respuesta es crear un sonido universal que nuestro cuerpo y mente puedan disfrutar sin tener que pensar en lo que se está cantando o diciendo. Este es el estándar bajo el cual concibo todas mis composiciones. No importa si es un arreglo simple de voces y guitarra, una producción electrónica, un arreglo de Big Band, o incluso una composición para Orquesta; si logro conectar contigo antes que la primera palabra sea cantada, he logrado mi cometido.",
 	"contactdesc": "Escríbeme para cualquier consulta a:",
+	"madeby": "Hecho por",
 	"creditlabel": "Créditos como:",
 	"voltagecredit": "Ingeniero de grabación.",
 	"dejatellevarcredit": "Compositor, escritor, productor, ingeniero de grabación, mezcla y mastering.",

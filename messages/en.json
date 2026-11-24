@@ -1,5 +1,6 @@
 {
 	"$schema": "https://inlang.com/schema/inlang-message-format",
+	"close": "Close",
 	"menu": "Menu",
 	"scrolldown": "Scroll to next section",
 	"home": "Home",
@@ -18,6 +19,7 @@
 	"about3": "I have always seen music as a language that can connect people no matter where they are from, or what language they speak.",
 	"about4": "In the same way, my music is the reflection of this belief: I want to create music that doesn't need translation from culture to culture, language to language. How can one achieve this? The answer is creating a sound so universal, that your body and your mind assimilate it before thinking of the words that are being sung. This is the ultimate goal I pursue with all of my music. It doesn't matter if it is a simple composition with voice and guitar, an electronic piece, a Big Band arrangement, or even a full orchestral composition; if I can connect with you before the first word has been sung, I have already won.",
 	"contactdesc": "For any inquiries, please reach me at:",
+	"madeby": "Made by",
 	"creditlabel": "Credited as:",
 	"voltagecredit": "Recording engineer.",
 	"dejatellevarcredit": "Composer, writer, producer, recording,  mixing and mastering engineer.",

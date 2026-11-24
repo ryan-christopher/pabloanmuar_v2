@@ -1,16 +1,7 @@
 <script lang="ts">
-	import { services, type StreamingUrls } from '#lib/streaming.js';
+	import { artistUrls, services } from '#lib/streaming.js';
 
-	const urls: StreamingUrls = {
-		// TODO: replace with the artist's own Tidal page
-		tidal: 'https://tidal.com/search?q=PABLO.ANMUAR',
-		apple: 'https://music.apple.com/us/artist/pablo-anmuar/1667428210',
-		youtube: 'https://www.youtube.com/channel/UChec6FqYBkUM4c1xLnibC-g',
-		soundcloud: 'https://soundcloud.com/pabloanmuar',
-		spotify: 'https://open.spotify.com/artist/4jPN3jx8MwNtQMJ6PD46yJ'
-	};
-
-	const links = services.map((service) => ({ ...service, href: urls[service.id] }));
+	const links = services.map((service) => ({ ...service, href: artistUrls[service.id] }));
 </script>
 
 <ul class="flex flex-wrap justify-center gap-4 min-[375px]:gap-6 sm:gap-10">

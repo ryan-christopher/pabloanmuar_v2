@@ -2,6 +2,7 @@
 	import './layout.css';
 	import appleTouchIcon from '#lib/assets/apple-touch-icon.png';
 	import favicon from '#lib/assets/favicon.png';
+	import Footer from '#lib/components/Footer.svelte';
 	import Navbar from '#lib/components/Navbar.svelte';
 	import { page } from '$app/state';
 	import { locales, localizeHref } from '#lib/paraglide/runtime.js';
@@ -13,7 +14,7 @@
 <svelte:head>
 	<link rel="icon" type="image/png" href={favicon} />
 	<link rel="apple-touch-icon" href={appleTouchIcon} />
-	<title>Pablo Anmuar</title>
+	<title>PABLO.ANMUAR</title>
 	<!-- Tell search engines about the other-language version of each page -->
 	{#each locales as locale (locale)}
 		<link
@@ -29,3 +30,5 @@
 <main>
 	{@render children()}
 </main>
+
+<Footer />
