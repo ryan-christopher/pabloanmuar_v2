@@ -1,0 +1,39 @@
+@import 'tailwindcss';
+/* Self-hosted fonts (Fontsource), replacing the old Google Fonts @imports */
+@import '@fontsource-variable/fredoka';
+@import '@fontsource/yatra-one';
+
+@theme {
+	/* Fredoka is the default body font; use `font-display` for Yatra One headings */
+	--font-sans: 'Fredoka Variable', sans-serif;
+	--font-display: 'Yatra One', serif;
+
+	/* Colors carried over from the React site's preloader */
+	--color-paper: #e9f1f7;
+	--color-ink: #222725;
+	--color-mustard: #f7ce5b;
+	--color-cinnabar: #d1603d;
+
+	/* Bounces 3 times, then stays still. Unlike Tailwind's bounce, it starts and ends at rest */
+	--animate-nudge: nudge 1s 3;
+	@keyframes nudge {
+		0%,
+		100% {
+			transform: none;
+			animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+		}
+		50% {
+			transform: translateY(-25%);
+			animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+		}
+	}
+}
+
+body {
+	@apply bg-paper text-ink;
+}
+
+html {
+	/* Navbar height, so sections scrolled to aren't hidden underneath it */
+	@apply scroll-pt-14 lg:scroll-pt-16;
+}
