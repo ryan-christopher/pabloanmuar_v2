@@ -15,7 +15,9 @@
 		{ href: '/#contact', label: m.contact }
 	];
 
-	const isHome = $derived(deLocalizeHref(page.url.pathname) === '/');
+	// Pages that start with a photo, which the navbar floats over instead of pushing down
+	const PHOTO_PAGES = ['/', '/portfolio'];
+	const overlay = $derived(PHOTO_PAGES.includes(deLocalizeHref(page.url.pathname)));
 
 	// How far to scroll, in pixels, before the background appears
 	const SCROLL_THRESHOLD = 100;
@@ -30,8 +32,8 @@
 	let nav: HTMLElement;
 	let menuButton: HTMLButtonElement;
 
-	// White links and doodle, for when nothing but the landing photo is behind them
-	const overPhoto = $derived(isHome && !scrolled && !menuOpen);
+	// White links and doodle, for when nothing but the photo at the top of the page is behind them
+	const overPhoto = $derived(overlay && !scrolled && !menuOpen);
 
 	afterNavigate(() => {
 		menuToggled = false;
@@ -60,12 +62,12 @@
 
 <svelte:window {onkeydown} {onclick} />
 
-<!-- Stays at the top while scrolling. On the home page it floats over the full-screen landing photo -->
+<!-- Stays at the top while scrolling. On pages that start with a photo, it floats over it -->
 <nav
 	bind:this={nav}
 	class={[
 		'inset-x-0 top-0 z-50 flex items-center justify-between gap-x-6 px-6 py-1.5 font-display transition-colors duration-300',
-		isHome ? 'fixed' : 'sticky',
+		overlay ? 'fixed' : 'sticky',
 		overPhoto && 'text-white'
 	]}
 >

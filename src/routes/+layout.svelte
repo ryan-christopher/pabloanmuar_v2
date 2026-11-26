@@ -4,11 +4,25 @@
 	import favicon from '#lib/assets/favicon.png';
 	import Footer from '#lib/components/Footer.svelte';
 	import Navbar from '#lib/components/Navbar.svelte';
+	import { afterNavigate, beforeNavigate } from '$app/navigation';
 	import { page } from '$app/state';
 	import { locales, localizeHref } from '#lib/paraglide/runtime.js';
 	import type { LayoutProps } from './$types';
 
 	let { children }: LayoutProps = $props();
+
+	// Smooth scrolling is only for links within a page. When going to another page, it would scroll the new
+	// page up from wherever the old one was, so jump straight there instead
+	beforeNavigate(({ from, to }) => {
+		if (to && from?.url.pathname !== to.url.pathname) {
+			document.documentElement.style.scrollBehavior = 'auto';
+		}
+	});
+
+	// Runs once the new page has been scrolled into place
+	afterNavigate(() => {
+		document.documentElement.style.scrollBehavior = '';
+	});
 </script>
 
 <svelte:head>

@@ -36,4 +36,6 @@ body {
 html {
 	/* Navbar height, so sections scrolled to aren't hidden underneath it */
 	@apply scroll-pt-14 lg:scroll-pt-16;
+	/* Glide to sections linked on the same page. Turned off while changing pages, in +layout.svelte */
+	@apply motion-safe:scroll-smooth;
 }

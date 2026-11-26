@@ -1,7 +1,6 @@
 <script lang="ts">
-	import { prefersReducedMotion } from 'svelte/motion';
-	import { innerHeight, scrollY } from 'svelte/reactivity/window';
 	import bedroom from '#lib/assets/media/bedroom2.jpg?w=640;1024;1200&enhanced';
+	import Banner from '#lib/components/Banner.svelte';
 	import OffsetLink from '#lib/components/OffsetLink.svelte';
 	import { m } from '#lib/paraglide/messages.js';
 	import { artistUrls, services } from '#lib/streaming.js';
@@ -38,47 +37,12 @@
 			streaming('spotify')
 		]
 	];
-
-	let banner: HTMLElement | undefined = $state();
-
-	// Same parallax as the About banner
-	const progress = $derived.by(() => {
-		const scroll = scrollY.current;
-		const height = innerHeight.current;
-		if (!banner || scroll === undefined || !height || prefersReducedMotion.current) return 0;
-		const { top, height: bannerHeight } = banner.getBoundingClientRect();
-		const p = 1 - (2 * (top + bannerHeight)) / (height + bannerHeight);
-		return Math.max(-1, Math.min(1, p));
-	});
 </script>
 
 <footer id="contact" class="overflow-hidden bg-paper text-ink">
-	<div
-		bind:this={banner}
-		class="relative isolate flex h-[12svh] items-center justify-center overflow-hidden bg-ink px-[5vw] lg:h-[16svh]"
-	>
-		<!-- 40% taller than the banner (20% each side), so it can shift without showing a gap -->
-		<div
-			class="absolute inset-x-0 -inset-y-[20%] -z-10 will-change-transform"
-			style:transform="translate3d(0, {(progress * 14).toFixed(2)}%, 0)"
-			aria-hidden="true"
-		>
-			<enhanced:img
-				src={bedroom}
-				alt=""
-				sizes="100vw"
-				loading="lazy"
-				class="absolute inset-0 h-full w-full object-cover"
-			/>
-		</div>
-		<!-- Darkens the photo so the heading stays readable -->
-		<div class="absolute inset-0 -z-10 bg-black/40"></div>
-		<h2 class="text-center font-display text-[2rem] text-white uppercase sm:text-5xl">
-			{m.contact()}
-		</h2>
-	</div>
+	<Banner image={bedroom} title={m.contact()} />
 
-	<p class="mx-[5vw] pt-10 pb-8 text-base lg:ml-[15vw] lg:text-lg">{m.contactdesc()}</p>
+	<p class="mx-auto px-[5vw] pt-10 pb-8 text-base md:w-[70vw] lg:text-lg">{m.contactdesc()}</p>
 	<div class="px-6 text-center">
 		<OffsetLink
 			href="mailto:{email}"
